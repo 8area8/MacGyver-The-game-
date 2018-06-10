@@ -2,6 +2,8 @@
 Be MacGaver and try to escape from the labyrinth!
 
 
+> NOTE: I use pytest for my tests, install it and write ```pytest``` in your favorite SHELL, from the root folder.
+
 A faire:
 
 - Labyrinthe à un seul niveau.
