@@ -5,8 +5,6 @@
 
 def main():
     """Launch the game."""
-    pass
-
     # Initialisation de pygame
 
     # importation des images
@@ -17,7 +15,7 @@ def main():
     while(running):
         pass
 
-        # vérification de interface
+        get_new_interface(interface)
 
         # events
 
@@ -26,6 +24,11 @@ def main():
         # refresh
 
         # FPS
+
+
+def get_new_interface(interface):
+    """Change to another interface if his name got a new value."""
+    pass
 
 
 if __name__ == "__main__":
