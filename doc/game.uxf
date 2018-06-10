@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.2">
-  <zoom_level>9</zoom_level>
+  <zoom_level>11</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>459</x>
-      <y>351</y>
-      <w>225</w>
-      <h>117</h>
+      <x>242</x>
+      <y>429</y>
+      <w>275</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>Game
 --
 + player: Player
 + map: Map
 
-victory: bool
++ victory: bool
 --
 - in_action(self): bool
 - camera_position(self): tuple(int)
-- remaining_items(self): void</panel_attributes>
+- count_remaining_items(self): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>792</x>
-      <y>288</y>
-      <w>198</w>
-      <h>99</h>
+      <x>649</x>
+      <y>352</y>
+      <w>242</w>
+      <h>121</h>
     </coordinates>
     <panel_attributes>Musics *module*
 --
@@ -45,10 +45,10 @@ fg=blue
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>738</x>
-      <y>711</y>
-      <w>216</w>
-      <h>90</h>
+      <x>583</x>
+      <y>869</y>
+      <w>264</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>Layer
 --
@@ -63,30 +63,30 @@ fg=blue
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1035</x>
-      <y>684</y>
-      <w>207</w>
-      <h>135</h>
+      <x>946</x>
+      <y>836</y>
+      <w>253</w>
+      <h>165</h>
     </coordinates>
     <panel_attributes>MapEntity(pygame.sprite.Sprite)
 --
-solid: bool
-name: string
++ solid: bool
++ name: string
 
-image: pygame.Surface
+- image: pygame.Surface
 
-coords: tuple(int)
-rect: pygame.Rect
-rect.x, rect.y: tuple(int)</panel_attributes>
++ coords: tuple(int)
++ rect: pygame.Rect
++ rect.x, rect.y: tuple(int)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1098</x>
+      <x>1023</x>
       <y>0</y>
-      <w>288</w>
-      <h>99</h>
+      <w>352</w>
+      <h>121</h>
     </coordinates>
     <panel_attributes>Affiche un labyrinthe. L'utilisateur peut déplacer
 un personnage au sein du labyrinthe.
@@ -98,19 +98,20 @@ fg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>459</x>
-      <y>171</y>
-      <w>234</w>
-      <h>99</h>
+      <x>242</x>
+      <y>209</y>
+      <w>286</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>/Interface *module*/
 --
-name: string
-windows: {string: Surface}
-musics: Musics 
++ name: string
++ windows: {string: Surface}
++ musics: Musics 
 --
 + start_events(self, self, events): void
 + update(self, self): void
++ draw(self): void
 bg=orange
 fg=red</panel_attributes>
     <additional_attributes/>
@@ -118,23 +119,23 @@ fg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>549</x>
-      <y>261</y>
-      <w>27</w>
-      <h>108</h>
+      <x>352</x>
+      <y>330</y>
+      <w>33</w>
+      <h>121</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>792</x>
-      <y>414</y>
-      <w>198</w>
-      <h>216</h>
+      <x>649</x>
+      <y>506</y>
+      <w>242</w>
+      <h>264</h>
     </coordinates>
-    <panel_attributes>Personnage(pygame.sprite.Sprite)
+    <panel_attributes>Player(pygame.sprite.Sprite)
 --
 + items: [string]
 + sounds: {string: Music}
@@ -156,10 +157,10 @@ fg=red</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>459</x>
-      <y>693</y>
-      <w>216</w>
-      <h>99</h>
+      <x>242</x>
+      <y>847</y>
+      <w>264</w>
+      <h>121</h>
     </coordinates>
     <panel_attributes>Map(pygame.sprite.Group)
 --
@@ -175,21 +176,21 @@ fg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>549</x>
-      <y>459</y>
-      <w>27</w>
-      <h>252</h>
+      <x>352</x>
+      <y>572</y>
+      <w>33</w>
+      <h>297</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;260.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;250.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>666</x>
-      <y>747</y>
-      <w>90</w>
-      <h>27</h>
+      <x>495</x>
+      <y>913</y>
+      <w>110</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>80.0;10.0;10.0;10.0</additional_attributes>
@@ -197,10 +198,10 @@ fg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>945</x>
-      <y>747</y>
-      <w>108</w>
-      <h>27</h>
+      <x>836</x>
+      <y>913</y>
+      <w>132</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
@@ -208,21 +209,21 @@ fg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>621</x>
-      <y>459</y>
-      <w>189</w>
-      <h>72</h>
+      <x>440</x>
+      <y>572</y>
+      <w>231</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>190.0;60.0;10.0;60.0;10.0;10.0</additional_attributes>
+    <additional_attributes>190.0;50.0;10.0;50.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>675</x>
-      <y>342</y>
-      <w>135</w>
-      <h>63</h>
+      <x>506</x>
+      <y>418</y>
+      <w>165</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>130.0;10.0;70.0;10.0;70.0;50.0;10.0;50.0</additional_attributes>
@@ -230,10 +231,10 @@ fg=red</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1413</x>
-      <y>1107</y>
-      <w>144</w>
-      <h>36</h>
+      <x>1408</x>
+      <y>1353</y>
+      <w>176</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>ajustement des FPS</panel_attributes>
     <additional_attributes/>
@@ -241,10 +242,10 @@ fg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1350</x>
-      <y>441</y>
-      <w>153</w>
-      <h>756</h>
+      <x>1331</x>
+      <y>539</y>
+      <w>187</w>
+      <h>924</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>130.0;10.0;10.0;10.0;10.0;820.0;150.0;820.0;150.0;780.0</additional_attributes>
@@ -252,10 +253,10 @@ fg=red</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1467</x>
-      <y>432</y>
-      <w>36</w>
-      <h>36</h>
+      <x>1474</x>
+      <y>528</y>
+      <w>44</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>running
 bg=green
@@ -265,10 +266,10 @@ type=decision</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1476</x>
-      <y>459</y>
-      <w>99</w>
-      <h>99</h>
+      <x>1485</x>
+      <y>561</y>
+      <w>121</w>
+      <h>121</h>
     </coordinates>
     <panel_attributes>running == true
 lt=&lt;-</panel_attributes>
@@ -277,10 +278,10 @@ lt=&lt;-</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1467</x>
-      <y>540</y>
-      <w>36</w>
-      <h>36</h>
+      <x>1474</x>
+      <y>660</y>
+      <w>44</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>bg=green
 type=decision</panel_attributes>
@@ -289,10 +290,10 @@ type=decision</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1494</x>
-      <y>540</y>
-      <w>234</w>
-      <h>36</h>
+      <x>1507</x>
+      <y>660</y>
+      <w>286</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>interface.name a changé de valeur
 lt=&lt;-</panel_attributes>
@@ -301,10 +302,10 @@ lt=&lt;-</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1710</x>
-      <y>540</y>
-      <w>171</w>
-      <h>45</h>
+      <x>1771</x>
+      <y>660</y>
+      <w>209</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>on change la variable interface
 bg=yellow
@@ -314,10 +315,10 @@ type=sender</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1476</x>
-      <y>576</y>
-      <w>351</w>
-      <h>63</h>
+      <x>1485</x>
+      <y>704</y>
+      <w>429</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;50.0;370.0;50.0;370.0;10.0</additional_attributes>
@@ -325,10 +326,10 @@ type=sender</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1476</x>
-      <y>567</y>
-      <w>27</w>
-      <h>99</h>
+      <x>1485</x>
+      <y>693</y>
+      <w>33</w>
+      <h>121</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
@@ -336,10 +337,10 @@ type=sender</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1413</x>
-      <y>648</y>
-      <w>144</w>
-      <h>36</h>
+      <x>1408</x>
+      <y>792</y>
+      <w>176</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>appel des évènements</panel_attributes>
     <additional_attributes/>
@@ -347,10 +348,10 @@ type=sender</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1476</x>
-      <y>675</y>
-      <w>27</w>
-      <h>180</h>
+      <x>1485</x>
+      <y>825</y>
+      <w>33</w>
+      <h>220</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;180.0;10.0;10.0</additional_attributes>
@@ -358,10 +359,10 @@ type=sender</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1395</x>
-      <y>837</y>
-      <w>180</w>
-      <h>36</h>
+      <x>1386</x>
+      <y>1023</y>
+      <w>220</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>mise à jour des éléments du jeu</panel_attributes>
     <additional_attributes/>
@@ -369,10 +370,10 @@ type=sender</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1404</x>
-      <y>1035</y>
-      <w>153</w>
-      <h>36</h>
+      <x>1397</x>
+      <y>1265</y>
+      <w>187</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>régénération de l'affichage</panel_attributes>
     <additional_attributes/>
@@ -380,10 +381,10 @@ type=sender</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1476</x>
-      <y>864</y>
-      <w>27</w>
-      <h>189</h>
+      <x>1485</x>
+      <y>1056</y>
+      <w>33</w>
+      <h>231</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;190.0;10.0;10.0</additional_attributes>
@@ -391,10 +392,10 @@ type=sender</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1476</x>
-      <y>1062</y>
-      <w>27</w>
-      <h>63</h>
+      <x>1485</x>
+      <y>1298</y>
+      <w>33</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
@@ -402,10 +403,10 @@ type=sender</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1827</x>
-      <y>252</y>
-      <w>153</w>
-      <h>45</h>
+      <x>1914</x>
+      <y>308</y>
+      <w>187</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>Initialisation de
 l'interface
@@ -415,10 +416,10 @@ l'interface
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1845</x>
-      <y>477</y>
-      <w>108</w>
-      <h>45</h>
+      <x>1936</x>
+      <y>583</y>
+      <w>132</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>Jouer une musique
 de fond</panel_attributes>
@@ -427,10 +428,10 @@ de fond</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1890</x>
-      <y>360</y>
-      <w>27</w>
-      <h>54</h>
+      <x>1991</x>
+      <y>440</y>
+      <w>33</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -438,10 +439,10 @@ de fond</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1890</x>
-      <y>432</y>
-      <w>27</w>
-      <h>63</h>
+      <x>1991</x>
+      <y>528</y>
+      <w>33</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
@@ -449,10 +450,10 @@ de fond</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1800</x>
-      <y>513</y>
-      <w>117</w>
-      <h>108</h>
+      <x>1881</x>
+      <y>627</y>
+      <w>143</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;100.0;110.0;100.0;110.0;10.0</additional_attributes>
@@ -460,10 +461,10 @@ de fond</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1890</x>
-      <y>198</y>
-      <w>27</w>
-      <h>72</h>
+      <x>1991</x>
+      <y>242</y>
+      <w>33</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
@@ -471,10 +472,10 @@ de fond</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1890</x>
-      <y>189</y>
-      <w>18</w>
-      <h>18</h>
+      <x>1991</x>
+      <y>231</y>
+      <w>22</w>
+      <h>22</h>
     </coordinates>
     <panel_attributes>type=initial</panel_attributes>
     <additional_attributes/>
@@ -482,10 +483,10 @@ de fond</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1692</x>
-      <y>828</y>
-      <w>36</w>
-      <h>36</h>
+      <x>1749</x>
+      <y>1012</y>
+      <w>44</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>bg=green
 type=decision</panel_attributes>
@@ -494,10 +495,10 @@ type=decision</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1566</x>
-      <y>828</y>
-      <w>144</w>
-      <h>36</h>
+      <x>1595</x>
+      <y>1012</y>
+      <w>176</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>
 lt=&lt;-</panel_attributes>
@@ -506,10 +507,10 @@ lt=&lt;-</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1845</x>
-      <y>324</y>
-      <w>108</w>
-      <h>45</h>
+      <x>1936</x>
+      <y>396</y>
+      <w>132</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>Création de la map</panel_attributes>
     <additional_attributes/>
@@ -517,10 +518,10 @@ lt=&lt;-</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1890</x>
-      <y>288</y>
-      <w>27</w>
-      <h>54</h>
+      <x>1991</x>
+      <y>352</y>
+      <w>33</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -528,10 +529,10 @@ lt=&lt;-</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>459</x>
-      <y>873</y>
-      <w>306</w>
-      <h>180</h>
+      <x>242</x>
+      <y>1067</y>
+      <w>374</w>
+      <h>220</h>
     </coordinates>
     <panel_attributes>NOTE
 
@@ -552,10 +553,10 @@ fg=dark_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>549</x>
-      <y>783</y>
-      <w>27</w>
-      <h>108</h>
+      <x>352</x>
+      <y>957</y>
+      <w>33</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
@@ -563,10 +564,10 @@ fg=dark_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1548</x>
-      <y>648</y>
-      <w>207</w>
-      <h>36</h>
+      <x>1573</x>
+      <y>792</y>
+      <w>253</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>
 lt=&lt;-</panel_attributes>
@@ -575,10 +576,10 @@ lt=&lt;-</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1737</x>
-      <y>648</y>
-      <w>36</w>
-      <h>36</h>
+      <x>1804</x>
+      <y>792</y>
+      <w>44</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>bg=green
 type=decision</panel_attributes>
@@ -587,10 +588,10 @@ type=decision</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1476</x>
-      <y>675</y>
-      <w>297</w>
-      <h>36</h>
+      <x>1485</x>
+      <y>825</y>
+      <w>363</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>le jeu est déjà "en action"
 lt=&lt;-</panel_attributes>
@@ -599,10 +600,10 @@ lt=&lt;-</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1764</x>
-      <y>648</y>
-      <w>180</w>
-      <h>36</h>
+      <x>1837</x>
+      <y>792</y>
+      <w>220</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 le jeu n'est pas "en action"</panel_attributes>
@@ -611,10 +612,10 @@ le jeu n'est pas "en action"</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1926</x>
-      <y>648</y>
-      <w>36</w>
-      <h>36</h>
+      <x>2035</x>
+      <y>792</y>
+      <w>44</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>bg=green
 type=decision</panel_attributes>
@@ -623,10 +624,10 @@ type=decision</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1476</x>
-      <y>675</y>
-      <w>486</w>
-      <h>54</h>
+      <x>1485</x>
+      <y>825</y>
+      <w>594</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 Aucune touche préssée</panel_attributes>
@@ -635,10 +636,10 @@ Aucune touche préssée</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1953</x>
-      <y>648</y>
-      <w>180</w>
-      <h>36</h>
+      <x>2068</x>
+      <y>792</y>
+      <w>220</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 Touche directionnelle préssée</panel_attributes>
@@ -647,10 +648,10 @@ Touche directionnelle préssée</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>2421</x>
-      <y>639</y>
-      <w>144</w>
-      <h>54</h>
+      <x>2640</x>
+      <y>781</y>
+      <w>176</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>On initialise le
 mouvement du personnage</panel_attributes>
@@ -659,10 +660,10 @@ mouvement du personnage</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2124</x>
-      <y>675</y>
-      <w>117</w>
-      <h>54</h>
+      <x>2277</x>
+      <y>825</y>
+      <w>143</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 mouvement invalide</panel_attributes>
@@ -671,10 +672,10 @@ mouvement invalide</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>2115</x>
-      <y>648</y>
-      <w>36</w>
-      <h>36</h>
+      <x>2266</x>
+      <y>792</y>
+      <w>44</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>bg=green
 type=decision</panel_attributes>
@@ -683,10 +684,10 @@ type=decision</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2142</x>
-      <y>648</y>
-      <w>297</w>
-      <h>36</h>
+      <x>2299</x>
+      <y>792</y>
+      <w>363</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 mouvement valide</panel_attributes>
@@ -695,10 +696,10 @@ mouvement valide</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>2115</x>
-      <y>711</y>
-      <w>36</w>
-      <h>36</h>
+      <x>2266</x>
+      <y>869</y>
+      <w>44</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>bg=green
 type=decision</panel_attributes>
@@ -707,10 +708,10 @@ type=decision</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1476</x>
-      <y>711</y>
-      <w>657</w>
-      <h>36</h>
+      <x>1485</x>
+      <y>869</y>
+      <w>803</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 le mouvement ne va pas vers le gardien</panel_attributes>
@@ -719,10 +720,10 @@ le mouvement ne va pas vers le gardien</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2142</x>
-      <y>711</y>
-      <w>189</w>
-      <h>36</h>
+      <x>2299</x>
+      <y>869</y>
+      <w>231</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 mouvement vers le gardien</panel_attributes>
@@ -731,10 +732,10 @@ mouvement vers le gardien</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>2313</x>
-      <y>702</y>
-      <w>144</w>
-      <h>54</h>
+      <x>2508</x>
+      <y>858</y>
+      <w>176</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>fin de la partie:
 interface.name = "generic"
@@ -744,10 +745,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1476</x>
-      <y>747</y>
-      <w>918</w>
-      <h>36</h>
+      <x>1485</x>
+      <y>913</y>
+      <w>1122</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;1000.0;20.0;1000.0;10.0</additional_attributes>
@@ -755,10 +756,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1476</x>
-      <y>684</y>
-      <w>1026</w>
-      <h>117</h>
+      <x>1485</x>
+      <y>836</y>
+      <w>1254</w>
+      <h>143</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;110.0;1120.0;110.0;1120.0;10.0</additional_attributes>
@@ -766,10 +767,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1719</x>
-      <y>828</y>
-      <w>198</w>
-      <h>36</h>
+      <x>1782</x>
+      <y>1012</y>
+      <w>242</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 personnage "en mouvement"</panel_attributes>
@@ -778,10 +779,10 @@ personnage "en mouvement"</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1899</x>
-      <y>828</y>
-      <w>90</w>
-      <h>36</h>
+      <x>2002</x>
+      <y>1012</y>
+      <w>110</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>On fait bouger
 le personnage</panel_attributes>
@@ -790,10 +791,10 @@ le personnage</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1980</x>
-      <y>837</y>
-      <w>54</w>
-      <h>27</h>
+      <x>2101</x>
+      <y>1023</y>
+      <w>66</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
@@ -801,10 +802,10 @@ le personnage</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1701</x>
-      <y>855</y>
-      <w>117</w>
-      <h>54</h>
+      <x>1760</x>
+      <y>1045</y>
+      <w>143</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 personnage inactif</panel_attributes>
@@ -813,10 +814,10 @@ personnage inactif</panel_attributes>
   <element>
     <id>UMLSyncBarHorizontal</id>
     <coordinates>
-      <x>1701</x>
-      <y>882</y>
-      <w>369</w>
-      <h>18</h>
+      <x>1760</x>
+      <y>1078</y>
+      <w>451</w>
+      <h>22</h>
     </coordinates>
     <panel_attributes>lw=5
 </panel_attributes>
@@ -825,10 +826,10 @@ personnage inactif</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1719</x>
-      <y>882</y>
-      <w>27</w>
-      <h>54</h>
+      <x>1782</x>
+      <y>1078</y>
+      <w>33</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -836,10 +837,10 @@ personnage inactif</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1710</x>
-      <y>918</y>
-      <w>36</w>
-      <h>36</h>
+      <x>1771</x>
+      <y>1122</y>
+      <w>44</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>bg=green
 type=decision</panel_attributes>
@@ -848,23 +849,23 @@ type=decision</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1737</x>
-      <y>918</y>
-      <w>144</w>
-      <h>36</h>
+      <x>1804</x>
+      <y>1122</y>
+      <w>187</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 personnage sur une
 case item</panel_attributes>
-    <additional_attributes>140.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1863</x>
-      <y>918</y>
-      <w>90</w>
-      <h>36</h>
+      <x>1969</x>
+      <y>1122</y>
+      <w>110</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>Destruction de
 l'item
@@ -874,21 +875,21 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1944</x>
-      <y>927</y>
-      <w>72</w>
-      <h>27</h>
+      <x>2068</x>
+      <y>1133</y>
+      <w>77</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>60.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>2250</x>
-      <y>918</y>
-      <w>117</w>
-      <h>36</h>
+      <x>2431</x>
+      <y>1122</y>
+      <w>143</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>ajout de l'item
 dans le personnage</panel_attributes>
@@ -897,10 +898,10 @@ dans le personnage</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2268</x>
-      <y>945</y>
-      <w>27</w>
-      <h>54</h>
+      <x>2453</x>
+      <y>1155</y>
+      <w>33</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -908,10 +909,10 @@ dans le personnage</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1638</x>
-      <y>927</y>
-      <w>90</w>
-      <h>72</h>
+      <x>1683</x>
+      <y>1133</y>
+      <w>110</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0;80.0;10.0</additional_attributes>
@@ -919,10 +920,10 @@ dans le personnage</panel_attributes>
   <element>
     <id>UMLSyncBarHorizontal</id>
     <coordinates>
-      <x>1638</x>
-      <y>972</y>
-      <w>648</w>
-      <h>18</h>
+      <x>1683</x>
+      <y>1188</y>
+      <w>792</w>
+      <h>22</h>
     </coordinates>
     <panel_attributes>lw=5
 </panel_attributes>
@@ -931,10 +932,10 @@ dans le personnage</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>2016</x>
-      <y>828</y>
-      <w>90</w>
-      <h>36</h>
+      <x>2145</x>
+      <y>1012</y>
+      <w>110</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>La caméra suit
 le personnage</panel_attributes>
@@ -943,10 +944,10 @@ le personnage</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2052</x>
-      <y>855</y>
-      <w>27</w>
-      <h>54</h>
+      <x>2189</x>
+      <y>1045</y>
+      <w>33</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -954,10 +955,10 @@ le personnage</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1476</x>
-      <y>972</y>
-      <w>288</w>
-      <h>45</h>
+      <x>1485</x>
+      <y>1188</y>
+      <w>352</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;30.0;300.0;30.0;300.0;10.0</additional_attributes>
@@ -965,10 +966,10 @@ le personnage</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1836</x>
-      <y>396</y>
-      <w>126</w>
-      <h>45</h>
+      <x>1925</x>
+      <y>484</y>
+      <w>154</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>Création du
 personnage joueur</panel_attributes>
@@ -977,10 +978,10 @@ personnage joueur</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>1269</x>
-      <y>171</y>
-      <w>1458</w>
-      <h>1062</h>
+      <x>1287</x>
+      <y>209</y>
+      <w>1727</w>
+      <h>1298</h>
     </coordinates>
     <panel_attributes>valign=top
 Game
@@ -990,10 +991,10 @@ fg=blue</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1998</x>
-      <y>918</y>
-      <w>72</w>
-      <h>36</h>
+      <x>2123</x>
+      <y>1122</y>
+      <w>88</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>jouer un son</panel_attributes>
     <additional_attributes/>
@@ -1001,10 +1002,10 @@ fg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2061</x>
-      <y>927</y>
-      <w>63</w>
-      <h>27</h>
+      <x>2200</x>
+      <y>1133</y>
+      <w>77</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
@@ -1012,10 +1013,10 @@ fg=blue</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>2106</x>
-      <y>918</y>
-      <w>108</w>
-      <h>45</h>
+      <x>2255</x>
+      <y>1122</y>
+      <w>132</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>modification de
 l'affichage des items
@@ -1025,10 +1026,10 @@ restants</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2205</x>
-      <y>927</y>
-      <w>63</w>
-      <h>27</h>
+      <x>2376</x>
+      <y>1133</y>
+      <w>77</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
