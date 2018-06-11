@@ -1,3 +1,4 @@
 [
-  "tests/modules/test_images.py::test_collect_images"
+  "tests/modules/test_images.py::test_collect_images",
+  "tests/modules/test_interface.py::test_interface"
 ]

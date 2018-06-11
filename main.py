@@ -7,7 +7,7 @@
 import pygame
 from pygame.locals import QUIT
 
-import core.modules.images as images
+from core.modules.images import collect_images
 
 
 def main():
@@ -16,11 +16,11 @@ def main():
     pygame.init()  # Initialize pygame.
 
     pygame.display.set_caption('MacGyver')  # We choose a title.
-    main_screen = pygame.display.set_mode((1280, 720))  # the main window.
+    main_screen = pygame.display.set_mode((960, 960))  # the main window.
 
-    # importation des images
+    images = collect_images()  # load all images.
+    interface = Introduction(images)
     fps = pygame.time.Clock()
-    interface = None
     running = True
 
     while(running):
