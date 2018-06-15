@@ -30,8 +30,8 @@ fg=blue</panel_attributes>
 + windows: {string: Surface}
 + musics: Musics 
 --
-+ start_events(self, self, events): void
-+ update(self, self): void
++ start_events(self, events): void
++ update(self): void
 + draw(self): void
 bg=orange
 fg=red</panel_attributes>
