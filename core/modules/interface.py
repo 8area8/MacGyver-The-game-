@@ -12,7 +12,7 @@ class Interface:
 
     def __init__(self):
         """Initialize the core variables."""
-        self.name = ""
+        self.change_to = ""
         self.windows = {}
         self.musics = None
 

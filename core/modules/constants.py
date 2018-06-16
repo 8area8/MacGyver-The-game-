@@ -4,3 +4,8 @@
 """Contain all constants variables."""
 
 UPSCALE = 2
+
+
+# IMAGES COORDINATES
+
+# Game

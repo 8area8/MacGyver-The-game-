@@ -16,7 +16,6 @@ class Introduction(Interface):
         """Initialize the core variables."""
         super().__init__()
 
-        self.name = "introduction"
         self.windows = {}
         self.musics = None
 
@@ -34,7 +33,7 @@ class Introduction(Interface):
         """Update the timer."""
         self.timer += 1
         if self.timer == self.max_timer:
-            self.name = "game"
+            self.change_to = "game"
 
     def draw(self):
         """Draw the elements."""
