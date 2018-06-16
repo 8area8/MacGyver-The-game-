@@ -3,7 +3,7 @@
 
 """Core Music class."""
 
-import os
+from os import listdir
 from pathlib import Path
 
 from pygame import mixer
@@ -21,18 +21,22 @@ class Music:
     def __init__(self, folder_name):
         """Init sounds and musics."""
         path = Path().resolve() / "assets" / "musics_sounds" / folder_name
-        self.sounds = {}
+        self._sounds = {}
 
-        for music in os.listdir(str(path / "musics")):
+        for music in listdir(str(path / "musics")):
             mixer.music.load(str(path / "musics" / music))
 
-        for sound in os.listdir(str(path / "sounds")):
-            self.sounds[sound] = mixer.Sound(str(path / "sounds" / sound))
+        for sound in listdir(str(path / "sounds")):
+            self._sounds[sound] = mixer.Sound(str(path / "sounds" / sound))
 
     def play_music(self):
         """Play a music."""
         mixer.music.play(loops=-1)
 
+    def stop_music(self):
+        """Stop the current music in fade out."""
+        mixer.music.fadeout(400)
+
     def play_sound(self, name):
         """Play a sound."""
-        self.sounds[name].play()
+        self._sounds[name].play()
