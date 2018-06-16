@@ -3,7 +3,7 @@
 
 """Launch the game from this file."""
 
-import importlib
+from importlib import import_module
 
 import pygame
 from pygame.locals import QUIT
@@ -50,12 +50,14 @@ def main():
         fps.tick(30)
 
 
-def get_new_interface(interface):
+def get_new_interface(interface, images):
     """Change to another interface if "change_to" got value."""
-    if interface.change_to:
-        name = interface.change_to
+    name = interface.change_to
+    if name:
         path = f"core.{name.lower()}.core_{name.lower()}"
-        return getattr(importlib.import_module(path), name)()
+        new_interface = getattr(import_module(path), name)
+
+        return new_interface(images)
     return interface
 
 
