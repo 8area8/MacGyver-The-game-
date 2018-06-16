@@ -3,7 +3,8 @@
 
 """Contain all constants variables."""
 
-UPSCALE = 2
+UPSCALE = 1
+SCREEN_SIZE = (480 * UPSCALE, 512 * UPSCALE)
 
 
 # IMAGES COORDINATES

@@ -6,6 +6,8 @@
 Used for others interfaces.
 """
 
+from pygame import Surface, SRCALPHA
+
 
 class Interface:
     """Define all the interface of the game."""
@@ -13,7 +15,10 @@ class Interface:
     def __init__(self):
         """Initialize the core variables."""
         self.change_to = ""
-        self.windows = {}
+
+        surface = Surface([960, 1024], SRCALPHA, 32)
+        self.windows = {"main": surface.convert_alpha()}
+
         self.musics = None
 
     def start_events(self, events):

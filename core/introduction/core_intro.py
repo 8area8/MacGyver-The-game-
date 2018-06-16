@@ -4,6 +4,7 @@
 """Introduction file."""
 
 from core.modules.interface import Interface
+from core.modules.musics import Music
 
 
 class Introduction(Interface):
@@ -16,14 +17,13 @@ class Introduction(Interface):
         """Initialize the core variables."""
         super().__init__()
 
-        self.windows = {}
-        self.musics = None
+        self.windows["bg"] = images["backgrounds"]["intro"]
+
+        self.musics = Music("introduction")
+        self.musics.play_music()
 
         self.timer = 0
-        self.max_timer = 90
-
-        # jouer la musique
-        # afficher l'image.
+        self.max_timer = 180
 
     def start_events(self, events):
         """No events."""
@@ -33,8 +33,9 @@ class Introduction(Interface):
         """Update the timer."""
         self.timer += 1
         if self.timer == self.max_timer:
-            self.change_to = "game"
+            self.musics.stop_music()
+            self.change_to = "Game"
 
     def draw(self):
         """Draw the elements."""
-        pass
+        self.windows["main"].blit(self.windows["bg"], (0, 0))
