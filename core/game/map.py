@@ -30,17 +30,17 @@ class Map():
         """Create random spawn for the items."""
         pass
 
-    def __get_item__(self, index):
+    def __getitem__(self, index):
         """Allow you to simply retrieve a value from the group.
 
         We will use "Map[index]".
         """
         try:
             self._layers[index]
-        except IndexError:
-            raise IndexError()
+        except IndexError as error:
+            raise error
         else:
-            return self._coords[index]
+            return self._layers[index]
 
 
 class Layer(sprite.Group):
@@ -58,9 +58,12 @@ class Layer(sprite.Group):
 
         We will use "Layer[key]".
         """
-        if key in self.keys():
+        try:
+            self._coords[key]
+        except KeyError as error:
+            raise error
+        else:
             return self._coords[key]
-        raise KeyError(f"The key '{key}' doesn't exist!")
 
     def __setitem__(self, key, value):
         """Allow you to add values ​​to the group.
@@ -68,17 +71,17 @@ class Layer(sprite.Group):
         We'll use "Layer[key] = value"
 
         The key must be a tuple that's correspond to coordinates,
-        and the value an instance of LabyrinthSprite.
+        and the value an instance of MapEntity.
         """
         if key in self.keys():
-            self.remove(self.coords[key])
+            self.remove(self._coords[key])
 
         self.add(value)
         self._coords[key] = value
 
     def keys(self):
         """Return the keys."""
-        return self.coords.keys()
+        return self._coords.keys()
 
 
 class MapEntity(sprite.Sprite):
