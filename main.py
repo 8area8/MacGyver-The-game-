@@ -18,7 +18,7 @@ def main():
     pygame.mixer.pre_init(44100, -16, 2, 2048)
     pygame.init()  # Initialize pygame.
 
-    pygame.display.set_caption('MacGyver')  # We choose a title.
+    pygame.display.set_caption("MacGyver")  # We choose a title.
     main_screen = pygame.display.set_mode(SCREEN_SIZE)  # the main window.
 
     images = collect_images()  # load all images.
