@@ -23,11 +23,11 @@ def import_map():
             line = line.rstrip('\n')
             content.append(list(line))
 
-    inspect_the_map(content)
+    _inspect_the_map(content)
     return content
 
 
-def inspect_the_map(content):
+def _inspect_the_map(content):
     """Inspect the map.
 
     Raise a ValueError if the map does not meet the standards.
@@ -42,7 +42,7 @@ def inspect_the_map(content):
                 if len(content) == 15:
                     return
 
-                else: error = "The map is too long. \n"
+                else: error = "The map is too long."
             else: error = "One or more map line are too long."
         else: error = "Miss a 'G' character."
     else: error = "One or more character are invalide."

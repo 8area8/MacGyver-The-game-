@@ -21,7 +21,6 @@ def main():
     pygame.display.set_caption('MacGyver')  # We choose a title.
     main_screen = pygame.display.set_mode(SCREEN_SIZE)  # the main window.
 
-    fmap_file = None  # load the map.
     images = collect_images()  # load all images.
     interface = Introduction(images)
     fps = pygame.time.Clock()
@@ -29,7 +28,7 @@ def main():
 
     while(running):
 
-        interface = get_new_interface(interface)
+        interface = _get_new_interface(interface)
 
         # Events section.
         for event in pygame.event.get():  # Events call.
@@ -51,7 +50,7 @@ def main():
         fps.tick(30)
 
 
-def get_new_interface(interface, images):
+def _get_new_interface(interface, images):
     """Change to another interface if "change_to" got value."""
     name = interface.change_to
     if name:
