@@ -7,7 +7,7 @@
       <x>495</x>
       <y>429</y>
       <w>275</w>
-      <h>154</h>
+      <h>165</h>
     </coordinates>
     <panel_attributes>Game
 --
@@ -49,14 +49,15 @@ fg=blue
       <x>836</x>
       <y>869</y>
       <w>264</w>
-      <h>110</h>
+      <h>121</h>
     </coordinates>
     <panel_attributes>Layer(pygame.sprite.Group)
 --
 + coords: {tuple(int): MapEntity}
 --
-+ __getitem__(self, key)
-+ __setitem__(self, key, value)
++ __getitem__(self, key): Sprite
++ __setitem__(self, key, value): void
++ __len__(self): void
 + keys(self)
 </panel_attributes>
     <additional_attributes/>
@@ -178,12 +179,12 @@ fg=red</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>605</x>
-      <y>572</y>
+      <y>583</y>
       <w>33</w>
-      <h>297</h>
+      <h>286</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;250.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;240.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -211,12 +212,12 @@ fg=red</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>693</x>
-      <y>572</y>
+      <y>583</y>
       <w>231</w>
-      <h>77</h>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>190.0;50.0;10.0;50.0;10.0;10.0</additional_attributes>
+    <additional_attributes>190.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
