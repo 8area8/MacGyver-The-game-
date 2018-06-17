@@ -21,6 +21,7 @@ def main():
     pygame.display.set_caption('MacGyver')  # We choose a title.
     main_screen = pygame.display.set_mode(SCREEN_SIZE)  # the main window.
 
+    fmap_file = None  # load the map.
     images = collect_images()  # load all images.
     interface = Introduction(images)
     fps = pygame.time.Clock()

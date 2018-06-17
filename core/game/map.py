@@ -8,7 +8,14 @@ from pygame import sprite, image as pymage
 
 
 class Map():
-    """Initialize the game map."""
+    """The game map.
+
+    This class works like a list of three layers.
+    Use it by first specifying the index of the layer,
+    and then the desired coordinates in the same layer.
+
+    example: my_map[0][1, 2]  # coords 1, 2 of layer 0.
+    """
 
     def __init__(self, images):
         """Init the map."""
