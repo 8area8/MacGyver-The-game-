@@ -15,7 +15,7 @@ from pathlib import Path
 conf = configparser.ConfigParser()
 if not path.exists('config.ini'):
     conf['size'] = {'case_pixels': '32', 'upscale': '1'}
-    conf['moove'] = {'speed': '4'}
+    conf['moove'] = {'speed': '8'}
     conf.write(open('config.ini', 'w'))
 else:
     conf.read("config.ini")
@@ -27,16 +27,16 @@ SCREEN_SIZE = (CASE_PIXELS * 15 * UPSCALE, CASE_PIXELS * 16 * UPSCALE)
 
 # MOVEMENT
 DIRECTION = {"up": (0, -1), "down": (0, 1), "left": (-1, 0), "right": (1, 0)}
-SPEED = int(conf["moove"]["speed"])
+SPEED = int(conf["moove"]["speed"]) * UPSCALE
 
 # ITEMS NAME
-items_path = Path().resolve() / "assets" / "images" / "objects"
-ITEMS = [i[:-4] for i in listdir(str(items_path))]
+_items_path = Path().resolve() / "assets" / "images" / "objects"
+ITEMS = [i[:-4] for i in listdir(str(_items_path))]
 
 # IMAGES COORDINATES
 MENU_Y = CASE_PIXELS * 15 * UPSCALE
 
 ITEMS_POS = {}
-pos = ((0, MENU_Y), (51 * UPSCALE, MENU_Y), (102 * UPSCALE, MENU_Y))
+_pos = ((0, MENU_Y), (51 * UPSCALE, MENU_Y), (102 * UPSCALE, MENU_Y))
 for i in range(3):
-    ITEMS_POS[ITEMS[i]] = pos[i]
+    ITEMS_POS[ITEMS[i]] = _pos[i]
