@@ -133,6 +133,13 @@ class Layer(sprite.Group):
         """Return the dict items."""
         return self._coords.items()
 
+    def suppr(self, key):
+        """Remove an sprite by a key."""
+        if not self[key]:
+            return None
+        self.remove(self._coords[key])
+        del self[key]
+
 
 class MapEntity(sprite.Sprite):
     """Sprite that represents an object in the labyrinth."""
@@ -147,5 +154,3 @@ class MapEntity(sprite.Sprite):
         self.solid = True if name == "wall" else False
 
         self.image = image
-        self.rect = self.image.get_rect()
-        self.rect.x, self.rect.y = self.coords
