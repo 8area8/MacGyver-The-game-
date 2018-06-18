@@ -26,6 +26,7 @@ class Map():
     def __init__(self, images, map_file):
         """Initialize the map."""
         self._layers = [Layer() for x in range(3)]
+        self.player_spawn = None
         self.create_map(images, map_file)
 
     def create_map(self, images, map_file):
@@ -45,6 +46,7 @@ class Map():
             y += 1
 
         self._create_items(images["objects"])
+        self._create_player_spawn()
 
     def _create_structure(self, images, char, coords):
         """Create the core structure (paths and walls)."""
@@ -73,6 +75,15 @@ class Map():
         for i in range(len(items)):
             pos, name = coords[i], items[i]
             self[1][pos] = MapEntity(name, images[name], pos)
+
+    def _create_player_spawn(self):
+        """Create a random spawn for the player."""
+        coords = (c for c, v in self[0].items() if v.name == "path")
+        coords = (c for c in coords if not self[2][c])
+        coords = [c for c in coords if not self[1][c]]
+        shuffle(coords)
+        x, y = coords.pop()
+        self.player_spawn = x * pixels, y * pixels
 
     def __getitem__(self, index):
         """Allow you to simply retrieve a value from self._layers.
@@ -138,7 +149,7 @@ class Layer(sprite.Group):
         if not self[key]:
             return None
         self.remove(self._coords[key])
-        del self[key]
+        del self._coords[key]
 
 
 class MapEntity(sprite.Sprite):
@@ -154,3 +165,5 @@ class MapEntity(sprite.Sprite):
         self.solid = True if name == "wall" else False
 
         self.image = image
+        self.rect = self.image.get_rect()
+        self.rect.x, self.rect.y = self.coords

@@ -1,13 +1,23 @@
 #! /usr/bin/env python3
 # coding: utf-8
 
-"""Contain all constants variables."""
+"""Contain all constants variables.
+
+Works with a config file.
+NOTE: if the config file doesn't exist, we create it with some default values.
+"""
 
 import configparser
+from os import path
 
 
 conf = configparser.ConfigParser()
-conf.read("config.ini")
+if not path.exists('config.ini'):
+    conf['size'] = {'case_pixels': '32', 'upscale': '1'}
+    conf['moove'] = {'speed': '4'}
+    conf.write(open('config.ini', 'w'))
+else:
+    conf.read("config.ini")
 
 # SIZES
 CASE_PIXELS = int(conf["size"]["case_pixels"])

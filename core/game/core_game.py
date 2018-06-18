@@ -3,14 +3,14 @@
 
 """Core Game module."""
 
-from pygame import key as pykey
-from pygame.locals import K_LEFT, K_RIGHT, K_UP, K_DOWN
+from pygame.locals import K_LEFT, K_RIGHT, K_UP, K_DOWN, KEYDOWN
 
+from core.modules.constants import MENU_Y, DIRECTION
 from core.modules.map_file import import_map
 from core.modules.interface import Interface
 from core.modules.musics import Music
+from core.game.player import Player
 from core.game.map import Map
-from core.modules.constants import MENU_Y, DIRECTION
 
 
 class Game(Interface):
@@ -30,7 +30,8 @@ class Game(Interface):
         self.musics = Music("game")
         self.musics.play_music()
 
-        self.player = None
+        player_spawn = map_.player_spawn
+        self.player = Player(images["characters"]["mcgayver"], player_spawn)
 
         self.victory = False
 
@@ -44,11 +45,15 @@ class Game(Interface):
         """Count the last items to get."""
         return len(self.windows["items"])
 
-    def start_events(self, events):
+    def start_events(self, event):
         """Game events.
 
-        In fact I don't need any event variable.
+        In fact I don't need events variable.
         """
+        self._get_moove_keys(event)
+
+    def _get_moove_keys(self, event):
+        """Get a moove key to moove the player."""
         map_ = self.windows["map"]
         chara = self.windows["chara"]
         x, y = self.player.r_coords
@@ -56,12 +61,18 @@ class Game(Interface):
         if self.in_action:
             return
 
-        keys_pressed = pykey.get_pressed()
-        for key in (K_DOWN, K_LEFT, K_RIGHT, K_UP):
-
-            if not keys_pressed[key]:
-                return
-            dx, dy = DIRECTION[key.name]
+        key = ""
+        if event.type == KEYDOWN:
+            if event.key == K_UP:
+                key = "up"
+            elif event.key == K_DOWN:
+                key = "down"
+            elif event.key == K_LEFT:
+                key = "left"
+            elif event.key == K_RIGHT:
+                key = "right"
+        if key:
+            dx, dy = DIRECTION[key]
             x, y = (x + dx, y + dy)
             if not map_[x, y] or map_[x, y].solid:
                 return
@@ -69,7 +80,7 @@ class Game(Interface):
                 self.change_to = "Generic"
                 return
 
-            self.player.start_moove(x, y)
+            self.player.start_moove(x, y, key)
             return
 
     def update(self):
@@ -77,10 +88,10 @@ class Game(Interface):
         if self.player.in_moove:
             self.player.moove()
 
-        if self.player.coords in self.windows["items"].keys():
-            name = self.windows["items"][self.player.coords].name
-            self.player.items.apprend(name)
-            self.windows["items"].suppr(self.player.coords)
+        if self.player.r_coords in self.windows["items"].keys():
+            name = self.windows["items"][self.player.r_coords].name
+            self.player.items.append(name)
+            self.windows["items"].suppr(self.player.r_coords)
             self.musics.play_sound("collect_point.ogg")
 
     def draw(self):
@@ -92,3 +103,4 @@ class Game(Interface):
         area["map"].draw(main_area)
         area["items"].draw(main_area)
         area["chara"].draw(main_area)
+        main_area.blit(self.player.image, self.player.t_coords)

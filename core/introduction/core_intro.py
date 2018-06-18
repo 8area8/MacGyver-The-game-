@@ -23,7 +23,7 @@ class Introduction(Interface):
         self.musics.play_music()
 
         self.timer = 0
-        self.max_timer = 180
+        self.max_timer = 90
 
     def start_events(self, events):
         """No events."""
