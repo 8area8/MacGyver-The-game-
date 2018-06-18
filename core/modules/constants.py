@@ -35,5 +35,8 @@ ITEMS = [i[:-4] for i in listdir(str(items_path))]
 
 # IMAGES COORDINATES
 MENU_Y = CASE_PIXELS * 15 * UPSCALE
-ITEMS_POS = {"aiguille": (0, MENU_Y), "ether": (51 * UPSCALE, MENU_Y),
-             "tube": (102 * UPSCALE, MENU_Y)}
+
+ITEMS_POS = {}
+pos = ((0, MENU_Y), (51 * UPSCALE, MENU_Y), (102 * UPSCALE, MENU_Y))
+for i in range(3):
+    ITEMS_POS[ITEMS[i]] = pos[i]
