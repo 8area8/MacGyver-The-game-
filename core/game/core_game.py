@@ -19,6 +19,7 @@ class Game(Interface):
         self.map_ = Map(images, import_map())
 
         self.windows["menu"] = images["menu"]["menu"]
+        self.windows["map"] = self.map_[0]
 
         self.musics = Music("game")
         self.musics.play_music()

@@ -4,6 +4,7 @@
 """Test the map module."""
 
 from pygame import display
+from pygame.sprite import Sprite
 
 from core.modules.map_file import import_map
 from core.modules.images import collect_images
@@ -15,9 +16,15 @@ def test_map():
     """Test the map module."""
     display.init()
     display.set_mode(SCREEN_SIZE)
-
     images = collect_images()
     map_file = import_map()
 
     map_ = Map(images, map_file)
-    assert map_[0][1, 10]
+
+    assert len(map_[0]) == 225
+    for layer in map_:
+        for key in layer.keys():
+            assert isinstance(key, tuple)
+            assert isinstance(layer[key], Sprite)
+            for digit in key:
+                assert isinstance(digit, int)

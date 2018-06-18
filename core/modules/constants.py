@@ -3,6 +3,7 @@
 
 """Contain all constants variables."""
 
+CASE_PIXELS = 32
 UPSCALE = 1
 SCREEN_SIZE = (480 * UPSCALE, 512 * UPSCALE)
 

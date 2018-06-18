@@ -3,9 +3,11 @@
 
 """Map module."""
 
-import random
+from random import shuffle
 
 from pygame import sprite
+
+from core.modules.constants import CASE_PIXELS as pixels
 
 
 class Map():
@@ -16,12 +18,14 @@ class Map():
     and then the desired coordinates in the same layer.
 
     example: my_map[0][1, 2]  # coords 1, 2 of layer 0.
+
+    NOTE: Map contains 3 layers. Read the "create_map" documentation
+    for more details.
     """
 
     def __init__(self, images, map_file):
         """Initialize the map."""
-        self._layers = list(Layer() for x in range(3))
-
+        self._layers = [Layer() for x in range(3)]
         self.create_map(images, map_file)
 
     def create_map(self, images, map_file):
@@ -39,30 +43,33 @@ class Map():
                 image = images["blocks"][name]
                 self[0][x, y] = MapEntity(name, image, (x, y))
 
-                self._create_characters(images["characters"]["guardian"], x, y)
+                self._create_characters(images, char, (x, y))
                 x += 1
             y += 1
 
         self._create_items(images["objects"])
 
-    def _create_characters(self, image, x, y):
+    def _create_characters(self, images, char, coords):
         """Create the secondary characters.
 
         NOTE: your can have more than one guardian.
         """
-        if x == "G":
-            self[2][x, y] = image
+        image = images["characters"]["guardian"]
+        if char == "G":
+            self[2][coords] = MapEntity("guardian", image, coords)
 
     def _create_items(self, images, items=("aiguille", "ether", "tube")):
         """Create the items.
 
         They appear randomly on the map.
         """
-        coords = [key for key, v in self[0].items() if v.name == "path"]
+        coords = (c for c, v in self[0].items() if v.name == "path")
+        coords = [c for c in coords if not self[2][c]]
+        shuffle(coords)
 
-        random_coords = (random.choice(coords) for x in range(len(items)))
-        for coords, item in zip(random_coords, items):
-            self[1][coords] = MapEntity(item, images[item], coords)
+        for i in range(len(items)):
+            pos, name = coords[i], items[i]
+            self[1][pos] = MapEntity(name, images[name], pos)
 
     def __getitem__(self, index):
         """Allow you to simply retrieve a value from self._layers.
@@ -78,10 +85,10 @@ class Map():
 
 
 class Layer(sprite.Group):
-    """Contain a group of images."""
+    """A group of Sprites, with some dict methods."""
 
     def __init__(self):
-        """Init the layer."""
+        """Initialize the layer."""
         super().__init__()
 
         self._coords = {}
@@ -93,8 +100,8 @@ class Layer(sprite.Group):
         """
         try:
             self._coords[key]
-        except KeyError as error:
-            raise error
+        except KeyError:
+            return None
         else:
             return self._coords[key]
 
@@ -129,11 +136,12 @@ class MapEntity(sprite.Sprite):
     """Represent an object in the labirynth."""
 
     def __init__(self, name, image, coords):
-        """Init the sprite."""
+        """Initialize the sprite."""
         super().__init__()
 
         self.name = name
-        self.coords = coords
+        x, y = coords
+        self.coords = (x * pixels, y * pixels)
         self.solid = True if name == "wall" else False
 
         self.image = image
