@@ -39,15 +39,18 @@ class Map():
         for line in map_file:
             x = 0
             for char in line:
-                name = "wall" if char == "o" else "path"
-                image = images["blocks"][name]
-                self[0][x, y] = MapEntity(name, image, (x, y))
-
+                self._create_structure(images, char, (x, y))
                 self._create_characters(images, char, (x, y))
                 x += 1
             y += 1
 
         self._create_items(images["objects"])
+
+    def _create_structure(self, images, char, coords):
+        """Create the core structure (paths and walls)."""
+        name = "wall" if char == "o" else "path"
+        image = images["blocks"][name]
+        self[0][coords] = MapEntity(name, image, coords)
 
     def _create_characters(self, images, char, coords):
         """Create the secondary characters.
@@ -90,7 +93,6 @@ class Layer(sprite.Group):
     def __init__(self):
         """Initialize the layer."""
         super().__init__()
-
         self._coords = {}
 
     def __getitem__(self, key):
@@ -124,16 +126,16 @@ class Layer(sprite.Group):
         return len(self._coords)
 
     def keys(self):
-        """Return the keys."""
+        """Return the dict keys."""
         return self._coords.keys()
 
     def items(self):
-        """Return the items."""
+        """Return the dict items."""
         return self._coords.items()
 
 
 class MapEntity(sprite.Sprite):
-    """Represent an object in the labirynth."""
+    """Sprite that represents an object in the labyrinth."""
 
     def __init__(self, name, image, coords):
         """Initialize the sprite."""
