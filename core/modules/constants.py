@@ -8,7 +8,8 @@ NOTE: if the config file doesn't exist, we create it with some default values.
 """
 
 import configparser
-from os import path
+from os import path, listdir
+from pathlib import Path
 
 
 conf = configparser.ConfigParser()
@@ -28,5 +29,11 @@ SCREEN_SIZE = (CASE_PIXELS * 15 * UPSCALE, CASE_PIXELS * 16 * UPSCALE)
 DIRECTION = {"up": (0, -1), "down": (0, 1), "left": (-1, 0), "right": (1, 0)}
 SPEED = int(conf["moove"]["speed"])
 
+# ITEMS NAME
+items_path = Path().resolve() / "assets" / "images" / "objects"
+ITEMS = [i[:-4] for i in listdir(str(items_path))]
+
 # IMAGES COORDINATES
 MENU_Y = CASE_PIXELS * 15 * UPSCALE
+ITEMS_POS = {"aiguille": (0, MENU_Y), "ether": (51 * UPSCALE, MENU_Y),
+             "tube": (102 * UPSCALE, MENU_Y)}

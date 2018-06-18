@@ -5,7 +5,7 @@
 
 from pygame.locals import K_LEFT, K_RIGHT, K_UP, K_DOWN, KEYDOWN
 
-from core.modules.constants import MENU_Y, DIRECTION
+from core.modules.constants import MENU_Y, DIRECTION, ITEMS_POS
 from core.modules.map_file import import_map
 from core.modules.interface import Interface
 from core.modules.musics import Music
@@ -89,8 +89,9 @@ class Game(Interface):
             self.player.moove()
 
         if self.player.r_coords in self.windows["items"].keys():
-            name = self.windows["items"][self.player.r_coords].name
-            self.player.items.append(name)
+            item = self.windows["items"][self.player.r_coords]
+            item.rect.x, item.rect.y = ITEMS_POS[item.name]
+            self.player.items.add(item)
             self.windows["items"].suppr(self.player.r_coords)
             self.musics.play_sound("collect_point.ogg")
 
@@ -100,6 +101,7 @@ class Game(Interface):
         main_area = area["main"]
 
         main_area.blit(area["menu"], (0, MENU_Y))
+        self.player.items.draw(main_area)
         area["map"].draw(main_area)
         area["items"].draw(main_area)
         area["chara"].draw(main_area)

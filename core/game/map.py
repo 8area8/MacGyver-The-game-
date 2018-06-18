@@ -7,7 +7,7 @@ from random import shuffle
 
 from pygame import sprite
 
-from core.modules.constants import CASE_PIXELS as pixels
+from core.modules.constants import CASE_PIXELS as pixels, ITEMS
 
 
 class Map():
@@ -63,7 +63,7 @@ class Map():
             image = images["characters"]["guardian"]
             self[2][coords] = MapEntity("guardian", image, coords)
 
-    def _create_items(self, images, items=("aiguille", "ether", "tube")):
+    def _create_items(self, images):
         """Create the items.
 
         They appear randomly on the map.
@@ -72,8 +72,8 @@ class Map():
         coords = [c for c in coords if not self[2][c]]  # avoid guardian cases
         shuffle(coords)
 
-        for i in range(len(items)):
-            pos, name = coords[i], items[i]
+        for i in range(len(ITEMS)):
+            pos, name = coords[i], ITEMS[i]
             self[1][pos] = MapEntity(name, images[name], pos)
 
     def _create_player_spawn(self):

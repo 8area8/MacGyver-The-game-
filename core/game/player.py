@@ -3,6 +3,8 @@
 
 """Player module."""
 
+from pygame.sprite import Group
+
 from core.modules.constants import CASE_PIXELS, SPEED, DIRECTION
 
 
@@ -11,7 +13,7 @@ class Player:
 
     def __init__(self, image, t_coords):
         """Initialize the player."""
-        self.items = []
+        self.items = Group()
         self.image = image
         self.t_coords = t_coords
 
