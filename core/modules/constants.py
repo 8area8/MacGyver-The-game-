@@ -3,9 +3,17 @@
 
 """Contain all constants variables."""
 
-CASE_PIXELS = 32
-UPSCALE = 1
-SCREEN_SIZE = (480 * UPSCALE, 512 * UPSCALE)
+import configparser
+
+
+conf = configparser.ConfigParser()
+conf.read("config.ini")
+
+
+CASE_PIXELS = int(conf["size"]["case_pixels"])
+UPSCALE = int(conf["size"]["upscale"])
+
+SCREEN_SIZE = (CASE_PIXELS * 15 * UPSCALE, CASE_PIXELS * 16 * UPSCALE)
 
 
 # IMAGES COORDINATES
