@@ -3,12 +3,13 @@
 import pygame
 
 from core.modules.images import collect_images
+from core.modules.constants import SCREEN_SIZE
 
 
 def test_collect_images():
     """Test if all images are collected."""
     pygame.init()
-    pygame.display.set_mode((1280, 720))
+    pygame.display.set_mode(SCREEN_SIZE)
 
     folder = collect_images()
 

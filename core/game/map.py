@@ -48,7 +48,7 @@ class Map():
 
     def _create_structure(self, images, char, coords):
         """Create the core structure (paths and walls)."""
-        name = "wall" if char == "o" else "path"
+        name = "wall" if char == "O" else "path"
         image = images["blocks"][name]
         self[0][coords] = MapEntity(name, image, coords)
 
@@ -57,8 +57,8 @@ class Map():
 
         NOTE: your can have more than one guardian.
         """
-        image = images["characters"]["guardian"]
         if char == "G":
+            image = images["characters"]["guardian"]
             self[2][coords] = MapEntity("guardian", image, coords)
 
     def _create_items(self, images, items=("aiguille", "ether", "tube")):
@@ -67,7 +67,7 @@ class Map():
         They appear randomly on the map.
         """
         coords = (c for c, v in self[0].items() if v.name == "path")
-        coords = [c for c in coords if not self[2][c]]
+        coords = [c for c in coords if not self[2][c]]  # avoid guardian cases
         shuffle(coords)
 
         for i in range(len(items)):
@@ -96,7 +96,7 @@ class Layer(sprite.Group):
         self._coords = {}
 
     def __getitem__(self, key):
-        """Allow you to simply retrieve a value from the group.
+        """Allow you to simply retrieve a value from the dict.
 
         We will use "Layer[key]".
         """
@@ -108,7 +108,7 @@ class Layer(sprite.Group):
             return self._coords[key]
 
     def __setitem__(self, key, value):
-        """Allow you to add values ​​to the group.
+        """Allow you to add values ​​to the dict.
 
         We'll use "Layer[key] = value"
 
