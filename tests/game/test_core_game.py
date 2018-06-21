@@ -6,7 +6,7 @@
 import time
 
 import pygame
-from pygame import display, mixer
+from pygame import display, mixer, font
 
 from core.modules.constants import SCREEN_SIZE
 from core.game.core_game import Game
@@ -15,6 +15,7 @@ from core.modules.images import collect_images
 
 def test_core_game():
     """Test Game."""
+    font.init()
     display.init()
     mixer.init()
     screen = display.set_mode(SCREEN_SIZE)

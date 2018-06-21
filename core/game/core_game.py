@@ -5,9 +5,10 @@
 
 from pygame.locals import K_LEFT, K_RIGHT, K_UP, K_DOWN, KEYDOWN
 
-from core.modules.constants import MENU_Y, DIRECTION, ITEMS_POS
+from core.modules.constants import MENU_Y, DIRECTION, ITEMS_POS, UPSCALE
 from core.modules.map_file import import_map
 from core.modules.interface import Interface
+from core.game.sprite_text import TextItems
 from core.modules.musics import Music
 from core.game.player import Player
 from core.game.map import Map
@@ -34,17 +35,13 @@ class Game(Interface):
         player_spawn = map_.player_spawn
         self.player = Player(images["characters"]["mcgayver"], player_spawn)
 
+        self.text = TextItems()
         self.victory = False
 
     @property
     def in_action(self):
         """Test if the player is in an action."""
         return True if self.player.in_moove else False
-
-    @property
-    def remaining_items(self):
-        """Count the last items to get."""
-        return len(self.windows["items"])
 
     def start_events(self, event):
         """Game events.
@@ -98,6 +95,8 @@ class Game(Interface):
             self.player.items.add(item)
             self.windows["items"].suppr(self.player.r_coords)
             self.musics.play_sound("collect_point.ogg")
+        
+        self.text.update(len(self.windows["items"]))
 
     def draw(self):
         """Draw the sprites."""
@@ -105,6 +104,7 @@ class Game(Interface):
         main_area = area["main"]
 
         main_area.blit(area["menu"], (0, MENU_Y))
+        main_area.blit(self.text.image, (self.text.coords))
         self.player.items.draw(main_area)
         area["map"].draw(main_area)
         area["items"].draw(main_area)

@@ -2,7 +2,7 @@
 
 Joue MacGyver et essaie de t'échapper du labyrinthe !
 
-![](https://media2.giphy.com/media/rR6t2tTUGe9ig/giphy.gif)
+![mcgyver](https://media2.giphy.com/media/rR6t2tTUGe9ig/giphy.gif)
 
 > NOTE: J'ai utilisé le module Pytest pour mes testes, tapez simplement ```pytest``` dans votre SHELL, depuis la racine du projet.
 
