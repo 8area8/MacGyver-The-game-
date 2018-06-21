@@ -21,8 +21,8 @@ else:
     conf.read("config.ini")
 
 # SIZES
-CASE_PIXELS = int(conf["size"]["case_pixels"])
 UPSCALE = int(conf["size"]["upscale"])
+CASE_PIXELS = int(conf["size"]["case_pixels"])
 SCREEN_SIZE = (CASE_PIXELS * 15 * UPSCALE, CASE_PIXELS * 16 * UPSCALE)
 
 # MOVEMENT

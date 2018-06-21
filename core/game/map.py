@@ -7,7 +7,7 @@ from random import shuffle
 
 from pygame import sprite
 
-from core.modules.constants import CASE_PIXELS as pixels, ITEMS
+from core.modules.constants import CASE_PIXELS as pixels, ITEMS, UPSCALE
 
 
 class Map():
@@ -83,7 +83,7 @@ class Map():
         coords = [c for c in coords if not self[1][c]]
         shuffle(coords)
         x, y = coords.pop()
-        self.player_spawn = x * pixels, y * pixels
+        self.player_spawn = x * pixels * UPSCALE, y * pixels * UPSCALE
 
     def __getitem__(self, index):
         """Allow you to simply retrieve a value from self._layers.
@@ -161,9 +161,14 @@ class MapEntity(sprite.Sprite):
 
         self.name = name
         x, y = coords
-        self.coords = (x * pixels, y * pixels)
+        coords = (x * pixels * UPSCALE, y * pixels * UPSCALE)
         self.solid = True if name == "wall" else False
 
         self.image = image
         self.rect = self.image.get_rect()
-        self.rect.x, self.rect.y = self.coords
+        self.rect.x, self.rect.y = coords
+
+    @property
+    def coords(self):
+        """Return the true coordinates."""
+        return self.rect.x, self.rect.y

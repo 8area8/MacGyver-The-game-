@@ -5,7 +5,7 @@
 
 from pygame.sprite import Group
 
-from core.modules.constants import CASE_PIXELS, SPEED, DIRECTION
+from core.modules.constants import CASE_PIXELS, SPEED, DIRECTION, UPSCALE
 
 
 class Player:
@@ -25,12 +25,12 @@ class Player:
     def r_coords(self):
         """Return the true coordinates."""
         x, y = self.t_coords
-        return x // CASE_PIXELS, y // CASE_PIXELS
+        return x // CASE_PIXELS // UPSCALE, y // CASE_PIXELS // UPSCALE
 
     def start_moove(self, x, y, direction):
         """Start a new player moove."""
         self.in_moove = True
-        self.destination = x * CASE_PIXELS, y * CASE_PIXELS
+        self.destination = x * CASE_PIXELS * UPSCALE, y * CASE_PIXELS * UPSCALE
         dx, dy = DIRECTION[direction]
         self.pace = dx * SPEED, dy * SPEED
 
