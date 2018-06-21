@@ -39,6 +39,8 @@ L'installation de ```Pytest``` est optionnelle, et permet de lancer les testes u
 
 ## Comment jouer
 
+![image du jeu](https://i.imgur.com/NsN91rq.png)
+
 Le but du jeu est de toucher le gardien avec au moins 3 items.
 Le personnage joueur est la chose avec des cheveux blonds, le gardien l'autre chose avec des cheveux bruns.
 Pour bouger le personnage joueur, il suffit d'utiliser les touches directionnelles.
