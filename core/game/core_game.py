@@ -21,6 +21,7 @@ class Game(Interface):
         super().__init__()
 
         map_ = Map(images, import_map())
+        self.images = images
 
         self.windows["menu"] = images["menu"]["menu"]
         self.windows["map"] = map_[0]
@@ -78,6 +79,9 @@ class Game(Interface):
                 return
             if chara[x, y]:
                 self.change_to = "Generic"
+                final = "win" if len(self.player.items) >= 3 else "loose"
+                self.images["final"] = self.images["backgrounds"][final]
+                self.musics.stop_music()
                 return
 
             self.player.start_moove(x, y, key)
@@ -90,7 +94,7 @@ class Game(Interface):
 
         if self.player.r_coords in self.windows["items"].keys():
             item = self.windows["items"][self.player.r_coords]
-            item.rect.x, item.rect.y = ITEMS_POS[item.name]
+            item.rect.x, item.rect.y = next(ITEMS_POS)
             self.player.items.add(item)
             self.windows["items"].suppr(self.player.r_coords)
             self.musics.play_sound("collect_point.ogg")

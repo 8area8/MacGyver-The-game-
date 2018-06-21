@@ -5,6 +5,7 @@
 
 import time
 
+import pygame
 from pygame import display, mixer
 
 from core.modules.constants import SCREEN_SIZE
@@ -21,11 +22,7 @@ def test_core_game():
     images = collect_images()
     game = Game(images)
 
-    game.start_events(None)
+    for event in pygame.event.get():
+        game.start_events(event)
     game.update()
     game.draw()
-
-    screen.blit(game.windows["main"], (0, 0))
-    display.flip()
-
-    time.sleep(3)

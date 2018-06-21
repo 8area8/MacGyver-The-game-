@@ -15,6 +15,7 @@ class Interface:
     def __init__(self):
         """Initialize the core variables."""
         self.change_to = ""
+        self.running = True
 
         surface = Surface([960, 1024], SRCALPHA, 32)
         self.windows = {"main": surface.convert_alpha()}

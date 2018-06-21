@@ -29,6 +29,7 @@ def main():
     while(running):
 
         interface = _get_new_interface(interface, images)
+        running = interface.running
 
         # Events section.
         for event in pygame.event.get():  # Events call.

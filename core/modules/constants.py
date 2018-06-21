@@ -30,13 +30,17 @@ DIRECTION = {"up": (0, -1), "down": (0, 1), "left": (-1, 0), "right": (1, 0)}
 SPEED = int(conf["moove"]["speed"]) * UPSCALE
 
 # ITEMS NAME
-_items_path = Path().resolve() / "assets" / "images" / "objects"
-ITEMS = [i[:-4] for i in listdir(str(_items_path))]
+ITEMS = [i[:-4] for i in listdir(Path() / "assets" / "images" / "objects")]
 
 # IMAGES COORDINATES
 MENU_Y = CASE_PIXELS * 15 * UPSCALE
 
-ITEMS_POS = {}
-_pos = ((0, MENU_Y), (51 * UPSCALE, MENU_Y), (102 * UPSCALE, MENU_Y))
-for i in range(3):
-    ITEMS_POS[ITEMS[i]] = _pos[i]
+
+def _items_pos():
+    """Return a position for an item."""
+    i = 0
+    pos = ((0, MENU_Y), (51 * UPSCALE, MENU_Y), (102 * UPSCALE, MENU_Y))
+    while True:
+        yield pos[i][0], pos[i][1]
+        i = (i + 1) % 3
+ITEMS_POS = _items_pos()
