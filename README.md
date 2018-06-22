@@ -9,7 +9,7 @@ Joue MacGyver et essaie de t'échapper du labyrinthe !
 ## Fonctionnalités demandés
 
 - Labyrinthe possède un seul niveau
-- ce niveau écrit dans un fichier
+- ce niveau est écrit dans un fichier
 - mcgyver est controlé par les touches directionnelles
 - 3 objets/items à ramasser (aiguille, tube plastique et éther)
 - les objets spawnent aléatoirement
@@ -33,8 +33,10 @@ Joue MacGyver et essaie de t'échapper du labyrinthe !
 
 ## Préréquis
 
-Il faut posséder ```Python 3.6```+ pour jouer à ce jeu (j'utilise les f-string, fonctionnalité de la 3.6)
+Il faut posséder ```Python 3.6```+ pour jouer à ce jeu (j'utilise les f-string, fonctionnalité de la 3.6).
+
 Installer ```Pygame``` est aussi necessaire.
+
 L'installation de ```Pytest``` est optionnelle, et permet de lancer les testes unitaires du projet.
 
 ## Comment jouer
@@ -42,7 +44,11 @@ L'installation de ```Pytest``` est optionnelle, et permet de lancer les testes u
 ![image du jeu](https://i.imgur.com/NsN91rq.png)
 
 Le but du jeu est de toucher le gardien avec au moins 3 items.
+
 Le personnage joueur est la chose avec des cheveux blonds, le gardien l'autre chose avec des cheveux bruns.
+
 Pour bouger le personnage joueur, il suffit d'utiliser les touches directionnelles.
+
 Pour "toucher" le gardien, il faut qu'il soit à une case du joueur, et enclencher un mouvement vers lui.
+
 Une fois sur l'écran de victoire, cliquer avec la souris/appuyer sur une touche du clavier fermera le programme.

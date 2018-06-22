@@ -13,7 +13,7 @@ class Player:
 
     def __init__(self, image, t_coords):
         """Initialize the player."""
-        self.items = Group()
+        self.items = Items()
         self.image = image
         self.t_coords = t_coords
 
@@ -42,3 +42,23 @@ class Player:
 
         if self.t_coords == self.destination:
             self.in_moove = False
+
+
+class Items(Group):
+    """Little class for the items sprites."""
+
+    def __init__(self):
+        """Initialize the class."""
+        super().__init__()
+    
+    def add(self, sprite=None):
+        """Add a new item.
+        
+        Remove another.
+        """
+        if not sprite:
+            return
+        if len(self) == 3:
+            removing = [i for i in self if i.coords == sprite.coords][0]
+            self.remove(removing)
+        super().add(sprite)

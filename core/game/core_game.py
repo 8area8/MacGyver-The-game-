@@ -94,7 +94,12 @@ class Game(Interface):
             item.rect.x, item.rect.y = next(ITEMS_POS)
             self.player.items.add(item)
             self.windows["items"].suppr(self.player.r_coords)
-            self.musics.play_sound("collect_point.ogg")
+            if len(self.player.items) > 2 and not self.victory:
+                self.musics.play_sound("all_items.ogg")
+                self.windows["menu"] = self.images["menu"]["menu_win"]
+                self.victory = True
+            else:
+                self.musics.play_sound("collect_point.ogg")
         
         self.text.update(len(self.windows["items"]))
 
