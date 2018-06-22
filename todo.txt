@@ -1,6 +1,0 @@
-name = none
-
-if interface.name:
-	on change l'interface.
-
-et pas name du coup... plutot "change_to"azer
