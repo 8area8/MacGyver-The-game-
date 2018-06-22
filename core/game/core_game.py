@@ -37,11 +37,12 @@ class Game(Interface):
 
         self.text = TextItems()
         self.victory = False
+        self.time_end = [False, 0, 30]
 
     @property
     def in_action(self):
         """Test if the player is in an action."""
-        return True if self.player.in_moove else False
+        return True if self.player.in_moove or self.time_end[0] else False
 
     def start_events(self, event):
         """Game events.
@@ -75,10 +76,12 @@ class Game(Interface):
             if not map_[x, y] or map_[x, y].solid:
                 return
             if chara[x, y]:
-                self.change_to = "Generic"
                 final = "win" if len(self.player.items) >= 3 else "loose"
+                chara[x, y].image = self.images["characters"][final]
                 self.images["final"] = self.images["backgrounds"][final]
                 self.musics.stop_music()
+                self.musics.play_sound("cry.ogg")
+                self.time_end[0] = True
                 return
 
             self.player.start_moove(x, y, key)
@@ -86,6 +89,12 @@ class Game(Interface):
 
     def update(self):
         """Update the game."""
+        if self.time_end[0]:
+            if self.time_end[1] != self.time_end[2]:
+                self.time_end[1] += 1
+            else:
+                self.change_to = "Generic"
+
         if self.player.in_moove:
             self.player.moove()
 
