@@ -18,11 +18,15 @@ class Generic(Interface):
         """Initialize Generic."""
         super().__init__()
 
-        self.windows["background"] = images["backgrounds"]["generic"]
         self.windows["final"] = images["final"]
-
         self.musics = Music("generic")
-        self.musics.play_sound("jingle_win.ogg")
+
+        if images["final"] == images["backgrounds"]["win"]:
+            self.musics.play_sound("jingle_win.ogg")
+            self.windows["background"] = images["backgrounds"]["generic_win"]
+        else:
+            self.musics.play_sound("fail.ogg")
+            self.windows["background"] = images["backgrounds"]["generic_fail"]
     
     def start_events(self, event):
         """Events."""
