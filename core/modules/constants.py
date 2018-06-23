@@ -27,7 +27,7 @@ SCREEN_SIZE = (CASE_PIXELS * 15 * UPSCALE, CASE_PIXELS * 16 * UPSCALE)
 
 # MOVEMENT
 DIRECTION = {"up": (0, -1), "down": (0, 1), "left": (-1, 0), "right": (1, 0)}
-SPEED = int(conf["moove"]["speed"]) * UPSCALE
+SPEED = int(conf["moove"]["speed"]) if int(conf["moove"]["speed"]) in (4, 8) else 8 * UPSCALE
 
 # ITEMS NAME
 ITEMS = [i[:-4] for i in listdir(Path() / "assets" / "images" / "objects")]

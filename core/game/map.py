@@ -135,6 +135,13 @@ class Layer(sprite.Group):
     def __len__(self):
         """Return the dict len."""
         return len(self._coords)
+    
+    def __delitem__(self, key):
+        """Give a key and delete the associate value."""
+        if not self[key]:
+            return None
+        self.remove(self._coords[key])
+        del self._coords[key]
 
     def keys(self):
         """Return the dict keys."""
@@ -144,12 +151,6 @@ class Layer(sprite.Group):
         """Return the dict items."""
         return self._coords.items()
 
-    def suppr(self, key):
-        """Remove an sprite by a key."""
-        if not self[key]:
-            return None
-        self.remove(self._coords[key])
-        del self._coords[key]
 
 
 class MapEntity(sprite.Sprite):

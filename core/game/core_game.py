@@ -102,7 +102,7 @@ class Game(Interface):
             item = self.windows["items"][self.player.r_coords]
             item.rect.x, item.rect.y = next(ITEMS_POS)
             self.player.items.add(item)
-            self.windows["items"].suppr(self.player.r_coords)
+            del self.windows["items"][self.player.r_coords]
             if len(self.player.items) > 2 and not self.victory:
                 self.musics.play_sound("all_items.ogg")
                 self.windows["menu"] = self.images["menu"]["menu_win"]
@@ -110,7 +110,7 @@ class Game(Interface):
             else:
                 self.musics.play_sound("collect_point.ogg")
         
-        self.text.update(len(self.windows["items"]))
+        self.text.update(max(0, 3 - len(self.player.items)))
 
     def draw(self):
         """Draw the sprites."""
