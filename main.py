@@ -26,7 +26,7 @@ def main():
     fps = pygame.time.Clock()
     running = True
 
-    while(running):
+    while running:
 
         interface = _get_new_interface(interface, images)
         running = interface.running

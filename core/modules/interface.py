@@ -22,7 +22,7 @@ class Interface:
 
         self.musics = None
 
-    def start_events(self, events):
+    def start_events(self, event):
         """Use pygame event to do things."""
         raise NotImplementedError()
 

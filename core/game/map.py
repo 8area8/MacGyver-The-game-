@@ -79,8 +79,8 @@ class Map():
     def _create_player_spawn(self):
         """Create a random spawn for the player."""
         coords = (c for c, v in self[0].items() if v.name == "path")
-        coords = (c for c in coords if not self[2][c])
-        coords = [c for c in coords if not self[1][c]]
+        coords = (c for c in coords if not self[2][c])  # avoid guardian cases
+        coords = [c for c in coords if not self[1][c]]  # avoid items cases
         shuffle(coords)
         x, y = coords.pop()
         self.player_spawn = x * pixels * UPSCALE, y * pixels * UPSCALE

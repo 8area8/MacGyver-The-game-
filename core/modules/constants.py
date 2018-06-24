@@ -12,22 +12,22 @@ from os import path, listdir
 from pathlib import Path
 
 
-conf = configparser.ConfigParser()
+CONF = configparser.ConfigParser()
 if not path.exists('config.ini'):
-    conf['size'] = {'case_pixels': '32', 'upscale': '1'}
-    conf['moove'] = {'speed': '8'}
-    conf.write(open('config.ini', 'w'))
+    CONF['size'] = {'case_pixels': '32', 'upscale': '1'}
+    CONF['moove'] = {'speed': '8'}
+    CONF.write(open('config.ini', 'w'))
 else:
-    conf.read("config.ini")
+    CONF.read("config.ini")
 
 # SIZES
-UPSCALE = int(conf["size"]["upscale"])
-CASE_PIXELS = int(conf["size"]["case_pixels"])
+UPSCALE = int(CONF["size"]["upscale"])
+CASE_PIXELS = int(CONF["size"]["case_pixels"])
 SCREEN_SIZE = (CASE_PIXELS * 15 * UPSCALE, CASE_PIXELS * 16 * UPSCALE)
 
 # MOVEMENT
 DIRECTION = {"up": (0, -1), "down": (0, 1), "left": (-1, 0), "right": (1, 0)}
-SPEED = int(conf["moove"]["speed"]) if int(conf["moove"]["speed"]) in (4, 8) else 8 * UPSCALE
+SPEED = int(CONF["moove"]["speed"]) if int(CONF["moove"]["speed"]) in (4, 8) else 8 * UPSCALE
 
 # ITEMS NAME
 ITEMS = [i[:-4] for i in listdir(Path() / "assets" / "images" / "objects")]

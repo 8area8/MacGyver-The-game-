@@ -5,7 +5,7 @@
 
 from pygame.locals import K_LEFT, K_RIGHT, K_UP, K_DOWN, KEYDOWN
 
-from core.modules.constants import MENU_Y, DIRECTION, ITEMS_POS, UPSCALE
+from core.modules.constants import MENU_Y, DIRECTION, ITEMS_POS
 from core.modules.map_file import import_map
 from core.modules.interface import Interface
 from core.game.sprite_text import TextItems
@@ -45,10 +45,7 @@ class Game(Interface):
         return True if self.player.in_moove or self.time_end[0] else False
 
     def start_events(self, event):
-        """Game events.
-
-        In fact I don't need events variable.
-        """
+        """Game events."""
         self._get_moove_keys(event)
 
     def _get_moove_keys(self, event):
