@@ -36,13 +36,12 @@ class Game(Interface):
         self.player = Player(images["characters"]["mcgayver"], player_spawn)
 
         self.text = TextItems()
-        self.victory = False
-        self.time_end = [False, 0, 30]
+        self.time_end = {"active": False, "timer": 0, "max_timer": 30}
 
     @property
     def in_action(self):
-        """Test if the player is in an action."""
-        return True if self.player.in_moove or self.time_end[0] else False
+        """Test if an action is in progress."""
+        return True if self.player.in_moove or self.time_end["active"] else False
 
     def start_events(self, event):
         """Game events."""
@@ -78,7 +77,7 @@ class Game(Interface):
                 self.images["final"] = self.images["backgrounds"][final]
                 self.musics.stop_music()
                 self.musics.play_sound("cry.ogg")
-                self.time_end[0] = True
+                self.time_end["active"] = True
                 return
 
             self.player.start_moove(x, y, key)
@@ -86,9 +85,9 @@ class Game(Interface):
 
     def update(self):
         """Update the game."""
-        if self.time_end[0]:
-            if self.time_end[1] != self.time_end[2]:
-                self.time_end[1] += 1
+        if self.time_end["active"]:
+            if self.time_end["timer"] != self.time_end["max_timer"]:
+                self.time_end["timer"] += 1
             else:
                 self.change_to = "Generic"
 
@@ -98,12 +97,12 @@ class Game(Interface):
         if self.player.r_coords in self.windows["items"].keys():
             item = self.windows["items"][self.player.r_coords]
             item.rect.x, item.rect.y = next(ITEMS_POS)
+            count_items = len(self.player.items)
             self.player.items.add(item)
             del self.windows["items"][self.player.r_coords]
-            if len(self.player.items) > 2 and not self.victory:
+            if count_items == 2:
                 self.musics.play_sound("all_items.ogg")
                 self.windows["menu"] = self.images["menu"]["menu_win"]
-                self.victory = True
             else:
                 self.musics.play_sound("collect_point.ogg")
         
